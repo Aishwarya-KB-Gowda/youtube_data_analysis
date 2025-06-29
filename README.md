@@ -1,7 +1,3 @@
-Here’s a well-structured **README.md** file for your **YouTube Data Harvesting and Warehousing Project**, suitable for GitHub and interview discussion:
-
----
-
 # 📊 YouTube Data Harvesting and Warehousing
 
 A complete data pipeline project using **YouTube Data API**, **MongoDB**, **MySQL**, and **Streamlit** to extract, store, migrate, and visualize YouTube channel data.
@@ -101,7 +97,7 @@ pip install -r requirements.txt
 4. Launch the Streamlit app:
 
 ```bash
-streamlit run app.py
+streamlit run youtube_data.py
 ```
 
 5. Use the interface to:
