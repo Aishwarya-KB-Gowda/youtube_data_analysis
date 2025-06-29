@@ -5,10 +5,12 @@ from pymongo import MongoClient
 import mysql.connector
 import pandas as pd
 import streamlit as st
+import pymysql
+
 
 # API connect:
 
-api_key = "AIzaSyAdQQ90nm__th74yhp57dmk-jR-sChSx-8"
+api_key = "AIzaSyADYb1fp9tYr2-cKFR3-muRLKxAmw9yWUI"
 api_service_name = "youtube"
 api_version = "v3"
 youtube = build(api_service_name, api_version, developerKey=api_key)
@@ -144,8 +146,11 @@ def get_playlist_details(channel_id):
 
 
 # MongoDB connection
+# client = pymongo.MongoClient("mongodb://localhost:27017")
+# db = client["youtube_data"]
+
 client = pymongo.MongoClient("mongodb://localhost:27017")
-db = client["youtube_data"]
+db = client['youtube_data']
 
 
 def channel_details(channel_id):
@@ -168,15 +173,15 @@ def channel_details(channel_id):
 
 def channel_table():
     # Connect to MongoDB
-    client = MongoClient('localhost', 27017)
+    client = pymongo.MongoClient("mongodb://localhost:27017")
     db = client['youtube_data']
     coll1 = db['channel_details']
 
     # Connect to MySQL
-    mydb = mysql.connector.connect(
+    mydb = pymysql.connect(
         host='localhost',
         user='root',
-        password='Sagar72427',
+        password='AiShu@123',
         port=3306,
         database='youtube_database'
     )
@@ -243,15 +248,17 @@ def channel_table():
 
 # playlist table:
 # MongoDB connection:
-    client = MongoClient('localhost', 27017)
+    # client = MongoClient('localhost', 27017)
+    # db = client['youtube_data']
+    client = pymongo.MongoClient("mongodb://localhost:27017")
     db = client['youtube_data']
     coll1 = db['channel_details']
 
 
 def playlist_table():
-    mydb = mysql.connector.connect(host='localhost',
+    mydb = pymysql.connect(host='localhost',
                                    user='root',
-                                   password='Sagar72427',
+                                   password='AiShu@123',
                                    port=3306,
                                    database='youtube_database')
     cursor = mydb.cursor()
@@ -315,15 +322,17 @@ def playlist_table():
 # videos_table
 # videos_table
 # Connect to MongoDB
-client = MongoClient('localhost', 27017)
+# client = MongoClient('localhost', 27017)
+# db = client['youtube_data']
+client = pymongo.MongoClient("mongodb://localhost:27017")
 db = client['youtube_data']
 coll1 = db['channel_details']
 
 
 def video_table():
-    mydb = mysql.connector.connect(host='localhost',
+    mydb = pymysql.connect(host='localhost',
                                    user='root',
-                                   password='Sagar72427',
+                                   password='AiShu@123',
                                    port=3306,
                                    database='youtube_database')
     cursor = mydb.cursor()
@@ -392,9 +401,9 @@ def video_table():
 
 # comments_table:
 def comments_table():
-    mydb = mysql.connector.connect(host='localhost',
+    mydb = pymysql.connect(host='localhost',
                                    user='root',
-                                   password='Sagar72427',
+                                   password='AiShu@123',
                                    port=3306,
                                    database='youtube_database')
     cursor = mydb.cursor()
@@ -497,7 +506,7 @@ def show_comments_table():
 
 
 # streamlit code
-st.title(":red[Yotube]:black[DataHarvesting]")
+st.title(":red[Yotube DataHarvesting]")
 channel_Id = st.text_input("Enter the ChannelId")
 
 
@@ -534,9 +543,9 @@ elif show_table == 'COMMENTS':
 
 
 # SQL_connection for SQL Q&A:
-mydb = mysql.connector.connect(host='localhost',
+mydb = pymysql.connect(host='localhost',
                                user='root',
-                               password='Sagar72427',
+                               password='AiShu@123',
                                port=3306,
                                database='youtube_database')
 cursor = mydb.cursor()
